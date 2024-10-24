@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Ejercicio9</title>
+</head>
+<body>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary position-relative" >
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Menu</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+    
+            <nav class="navbar bg-body-tertiary class="d-flex justify-content-end">
+              
+                <div class="container">
+                  <a class="navbar-brand" href="#">
+                    <img src="https://www.dolphindiscovery.com.mx/src/about/dolphins/About_Dolphins.jpg" alt="Bootstrap" width="50" height="44" class="border border-5">
+                  </a>
+                  <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addModal">Añadir</button>
+                </div>
+              </nav>
+    
+          </div>
+        </div>
+       
+    </nav>
+
+    <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Active</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+        </li>
+    </ul>
+
+
+
+    <div id="cardCont">
+<div class="container mt-4 text-center" id="opcCard">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body">
+          <img src="https://i.blogs.es/a3c185/croquetas/1366_2000.jpg" class="d-block w-100" alt="300">
+          <h5 class="card-title">Croquetas</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+        <a href="Ejercicio3.html" class="btn btn-primary">Go somewhere</a>
+          <a href="#" class="btn btn-warning" onclick="editCard('opcCard')">Editar</a>
+            <!--eliminar-->
+          <a href="#" class="btn btn-danger" onclick="deleteCard('opcCard')">Eliminar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+ </div>
+</div>
+
+
+<!-- Editar -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModalLabel">Editar Contenido</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="editForm">
+          <div class="mb-3">
+            <label for="editTitle" class="form-label">Título</label>
+            <input type="text" class="form-control" id="editTitle" value="">
+          </div>
+          <div class="mb-3">
+            <label for="editText" class="form-label">Texto</label>
+            <textarea class="form-control" id="editText" rows="3"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" onclick="saveEdit()">Guardar cambios</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- añadir -->
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addModalLabel">Añadir nueva tarjeta</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="addForm">
+            <div class="mb-3">
+              <label for="addTitle" class="form-label">Título</label>
+              <input type="text" class="form-control" id="addTitle" placeholder="Ingrese el título">
+            </div>
+            <div class="mb-3">
+              <label for="addText" class="form-label">Texto</label>
+              <textarea class="form-control" id="addText" rows="3" placeholder="Ingrese el texto"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" onclick="saveNewCard()">Añadir tarjeta</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+ function deleteCard(containerId) {
+    var container = document.getElementById(containerId);
+    container.remove();
+  }
+
+  let currentEditContainer = null;
+
+  function editCard(containerId) {
+    currentEditContainer = document.getElementById(containerId);
+    const title = currentEditContainer.querySelector('.card-title').textContent;
+    const text = currentEditContainer.querySelector('.card-text').textContent;
+
+    document.getElementById('editTitle').value = title;
+    document.getElementById('editText').value = text;
+
+    var myModal = new bootstrap.Modal(document.getElementById('editModal'));
+    myModal.show();
+  }
+
+  function saveEdit() {
+    const newTitle = document.getElementById('editTitle').value;
+    const newText = document.getElementById('editText').value;
+
+    currentEditContainer.querySelector('.card-title').textContent = newTitle;
+    currentEditContainer.querySelector('.card-text').textContent = newText;
+
+    var myModalEl = document.getElementById('editModal');
+    var modal = bootstrap.Modal.getInstance(myModalEl);
+    modal.hide();
+  }
+
+  let cardCounter = 2; 
+
+  function saveNewCard() {
+    const title = document.getElementById('addTitle').value;
+    const text = document.getElementById('addText').value;
+
+    if (!title || !text) {
+      alert("Debes ingresar ambos valores.");
+      return;
+    }
+
+    const originalCard = document.getElementById('opcCard');
+    const newCard = originalCard.cloneNode(true);
+
+    const newContainerId = 'opcCard' + cardCounter;
+    newCard.id = newContainerId;
+
+    newCard.querySelector('.card-title').textContent = title;
+    newCard.querySelector('.card-text').textContent = text;
+
+    newCard.querySelector('.btn-warning').setAttribute('onclick', `editCard('${newContainerId}')`);
+    newCard.querySelector('.btn-danger').setAttribute('onclick', `deleteCard('${newContainerId}')`);
+
+    document.getElementById('cardCont').appendChild(newCard);
+
+    cardCounter++;
+
+    var myModalEl = document.getElementById('addModal');
+    var modal = bootstrap.Modal.getInstance(myModalEl);
+    modal.hide();
+  }
+</script>
+
+</body>
+</html>
